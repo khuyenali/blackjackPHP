@@ -1,0 +1,315 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.status > div {
+  display: inline-block;
+  margin: 0.5rem;
+  color: rgb(230, 9, 9);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.player > div:first-child,
+#p9 > div:first-child {
+  margin: 0.5ex;
+  color: rgb(207, 219, 34);
+  font-size: 3ex;
+  font-weight: bold;
+}
+
+#title {
+  text-transform: uppercase;
+  font-family: "Playfair Display", serif;
+  color: yellow;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 3rem;
+  margin-bottom: 5rem;
+}
+
+img {
+  width: 15ex;
+}
+
+.input {
+  width: 3rem;
+}
+
+.selected {
+  border: 0.25rem solid rgb(78, 197, 62);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: 0.3s;
+}
+
+.isSignal {
+  border: 0.25rem solid rgb(211, 20, 20);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: 0.3s;
+}
+
+#com,
+#com > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+#com > div {
+  /* width: ; */
+  /* padding: 4rem; */
+  /* margin: 2rem; */
+}
+
+#players {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.player > div {
+  display: flex;
+  justify-content: center;
+}
+
+.img > img {
+  float: left;
+  position: relative;
+  animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  /* Firefox */
+  -webkit-animation: fadein 0.5s;
+  /* Safari and Chrome */
+  -o-animation: fadein 0.5s;
+  /* Opera */
+}
+@keyframes fadein {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.img > img:not(:first-child) {
+  margin-left: -7.5ex;
+  /* margin-right: 5ex; */
+  /* margin-top: 10ex; */
+}
+
+body {
+  background-image: url(img/table1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* height: 100vh; */
+  min-height: 100vh;
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+#playGround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* height: 100vh; */
+}
+
+#container p {
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  color: #fce403;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+#container > div {
+  display: flex;
+  justify-content: center;
+  /* margin: 2rem; */
+}
+
+#playersNumber {
+  background-color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 2em;
+  height: 3rem;
+  text-align: center;
+  text-align-last: center;
+  font-size: 1rem;
+  width: 10rem;
+  transition: 0.3s;
+}
+option {
+  /* text-align: center; */
+  /* reset to left*/
+}
+
+#playersNumber:focus {
+  outline: none;
+  /* background-color: #000000;
+  color: #fce403;
+  text-align: center; */
+}
+#playersNumber:hover {
+  outline: none;
+  background-color: #000000;
+  color: #fce403;
+}
+#submit {
+  background-color: #000000;
+  color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 2em;
+  width: 5rem;
+  font-size: 1rem;
+  height: 3rem;
+  transition: 0.3s;
+  margin-left: 1rem;
+}
+#submit:hover {
+  background-color: #fce403;
+  color: #000000;
+  border-radius: 2em;
+}
+
+#title {
+  animation: blinker 2s linear infinite;
+  text-align: center;
+}
+
+@keyframes blinker {
+  25% {
+    color: #000000;
+  }
+  50% {
+    color: #fce403;
+  }
+  75% {
+    color: #fce403;
+  }
+}
+
+#playGround button {
+  padding: 1rem;
+  background-color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 0.5rem;
+  height: 2rem;
+  width: 3.5rem;
+  text-align: center;
+  transition: 0.3s;
+  padding: 0px;
+  margin: 0.25rem;
+}
+#playGround button:hover {
+  background-color: #000000;
+  color: #fce403;
+}
+#playGround button:focus {
+  outline: none;
+}
+#playGround button:disabled {
+  background-color: #a39d9d;
+}
+
+#playGround input {
+  background-color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 2rem;
+  height: 2rem;
+  text-align: center;
+  width: 4rem;
+  margin: 0.25rem;
+}
+
+#playGround input:focus {
+  outline: none;
+  background-color: #000000;
+  color: #fce403;
+  text-align: center;
+}
+#playGround input:hover {
+  background-color: #000000;
+  color: #fce403;
+}
+
+#again {
+  background-color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 2rem;
+  position: absolute;
+  width: 8rem;
+  height: 2rem;
+  top: 40%;
+  left: 50%;
+  margin-left: -4rem;
+  transition: 0.3s;
+}
+
+#again:hover {
+  background-color: #000000;
+  color: #fce403;
+}
+
+#statistic {
+  display: none;
+  position: fixed;
+  top: 0;
+  border: 0.5rem solid rgb(45, 170, 34);
+  border-radius: 1rem;
+}
+
+#statistic th {
+  color: #ffffff;
+  background-color: #000000;
+  /* border-radius: 2rem; */
+}
+
+#statistic tr {
+  color: #fce403;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+#header,
+#addTo {
+  border-collapse: collapse;
+}
+
+#header th,
+#addTo td {
+  width: 6rem;
+  text-align: center;
+}
+
