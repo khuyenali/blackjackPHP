@@ -19,7 +19,6 @@
   <?php include_once 'game.php'; ?>
 
   <?php
-  echo $hello;
   if (isset($_POST['stand'])) {
     $com->auto($deck, $player);
     $com->compare($player);

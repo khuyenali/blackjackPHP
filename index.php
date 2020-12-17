@@ -38,8 +38,8 @@
 </head>
 
 <body>
-    <?php 
-    
+    <?php
+
     session_start();
     include_once 'database.php' ?>
     <div id="login">
@@ -74,14 +74,13 @@
         </form>
     </div>
     <?php
-    $hello = 'aaa';
     if (isset($_GET['submitNew'])) {
         $id = $_GET['idNew'];
         $password = $_GET['passwordNew'];
         $rePass = $_GET['repasswordNew'];
         if ($password === $rePass) {
             $sql = 'INSERT INTO player VALUES("' . $id . '", "' . $password . '", "' . 1000 . '")';
-            if (mysqli_query($link, $sql)) {
+            if ($conn->query($sql)) {
                 echo 'User create successfully';
             } else {
                 // echo 'Error ' . mysqli_error($link);
@@ -96,7 +95,7 @@
         $id = $_GET['idLogin'];
         $password = $_GET['passwordLogin'];
         $sql = 'SELECT id, password, chips FROM player WHERE id="' . $id . '"';
-        $result = mysqli_query($link, $sql);
+        $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // echo $mysqli_result;
             // while($row = $result->fetch_assoc()){
@@ -113,8 +112,9 @@
 
                 $_SESSION['player'] = serialize($player);
                 $_SESSION['com'] = serialize($com);
+                $_SESSION['$conn'] = serialize($conn);
                 header('Location: ./app.php');
-                mysqli_close($link);
+                $conn->close();
                 exit();
                 //to do
 
@@ -126,7 +126,8 @@
         }
     }
 
-    mysqli_close($link);
+    // mysqli_close($link);
+    $conn->close();
     ?>
 </body>
 
