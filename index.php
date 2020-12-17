@@ -38,7 +38,10 @@
 </head>
 
 <body>
-    <?php include_once 'database.php' ?>
+    <?php 
+    
+    session_start();
+    include_once 'database.php' ?>
     <div id="login">
         <div>Login</div>
         <form action="index.php" method="GET">
@@ -92,7 +95,7 @@
     if (isset($_GET['submitLogin'])) {
         $id = $_GET['idLogin'];
         $password = $_GET['passwordLogin'];
-        $sql = 'SELECT id, password FROM player WHERE id="' . $id . '"';
+        $sql = 'SELECT id, password, chips FROM player WHERE id="' . $id . '"';
         $result = mysqli_query($link, $sql);
         if ($result->num_rows > 0) {
             // echo $mysqli_result;
@@ -103,9 +106,16 @@
             $info = $result->fetch_assoc();
             if ($info['password'] === $password) {
                 echo 'Login!!!';
+                include_once 'game.php';
+
+                $player = new Player($id, $info['chips']);
+                $com = new Player('9', 100);
+
+                $_SESSION['player'] = serialize($player);
+                $_SESSION['com'] = serialize($com);
                 header('Location: ./app.php');
                 mysqli_close($link);
-                die();
+                exit();
                 //to do
 
             } else {

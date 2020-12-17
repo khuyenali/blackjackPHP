@@ -65,6 +65,9 @@
     <div id="players">
       <div id="p0" class="player selected">
         <div id=" playerText0">
+        <?php 
+        echo 'ID: '.$player->id;
+        ?>
         </div>
         <div id="img0" class="img">
           <?php

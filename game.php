@@ -58,7 +58,7 @@ class Deck
 
     function getCard()
     {
-        if($this->index === 50){
+        if ($this->index === 50) {
             $this->deck = array();
             $this->index = 0;
             $this->getDeck();
@@ -78,10 +78,11 @@ if (isset($_SESSION['deck'])) {
 
 class Com
 {
-    public ?string $id = null;
-    public ?int $chips = null;
+    public $id = "";
+    public $chips = 0;
     public $hand = array();
     public $point = [0, ''];
+
 
     public function __construct($id)
     {
@@ -130,19 +131,19 @@ class Com
     function compare(Player $player)
     {
         if ($player->point[1] === 'Burst') {
-            $player->status = 'Lose -'. $player->bets;
+            $player->status = 'Lose -' . $player->bets;
             $player->chips -= $player->bets;
             // echo "L: " . $this->point[1] . " " . $player->point[1] . "";
         } else if ($this->point[1] === 'Burst' || $player->point[0] > $this->point[0]) {
-            $player->status = 'Win +'. $player->bets;
+            $player->status = 'Win +' . $player->bets;
             $player->chips += $player->bets;
             // echo "W: " . $this->point[1] . " " . $player->point[1] . "";
         } else if ($player->point[0] < $this->point[0]) {
-            $player->status = 'Lose -'. $player->bets;
+            $player->status = 'Lose -' . $player->bets;
             $player->chips -= $player->bets;
             // echo "L: " . $this->point[1] . " " . $player->point[1] . "";
         } else {
-            $player->status = "Draw"; 
+            $player->status = "Draw";
             // echo "D: " . $this->point[1] . " " . $player->point[1] . "";
         }
     }
@@ -164,7 +165,7 @@ class Com
 
 class Player extends Com
 {
-    public ?int $bets = null;
+    public $bets = 0;
     public $status = null;
 
     public function __construct($id, $chips)
@@ -181,12 +182,8 @@ class Player extends Com
 
 if (isset($_SESSION['player'])) {
     $player = unserialize($_SESSION['player']);
-} else {
-    $player = new Player('0', 1000);
-}
+} 
 // print_r($player);
 if (isset($_SESSION['com'])) {
     $com = unserialize($_SESSION['com']);
-} else {
-    $com = new Player('9', 100);
-}
+} 
