@@ -5,13 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- <meta http-equiv="x-ua-compatible" content="IE=11" /> -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="app.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet" />
   <title>21 Point</title>
 </head>
 
 <body>
+
   <?php
   session_start();
   ?>
@@ -19,34 +20,45 @@
   <?php include_once 'game.php'; ?>
 
   <?php
-  if (isset($_POST['stand'])) {
+  if (isset($_GET['stand'])) {
     $com->auto($deck, $player);
     $com->compare($player);
-    $player->bet = 0;
-    $player->point = [0, ''];
-    $_SESSION['player'] = serialize($player);
-    $_SESSION['com'] = serialize($com);
-    $_SESSION['deck'] = serialize($deck);
   }
   ?>
+
+
+  <div id="menu">
+    <ul>
+      <div id="left">
+        <li id="bj">BlackJack</li>
+      </div>
+      <div id="right">
+        <?php
+        echo '<li>ID: ' . $player->id . '</li>';
+        ?>
+        <li><a href="user.php">User info</a></li>
+        <li><a href="index.php">Log out</a></li>
+      </div>
+    </ul>
+  </div>
   <div id="playGround" style="height: 100vh;">
     <div id="com">
       <div id="p9" class="isSignal">
         <div>Dealer</div>
         <div id="img9" class="img">
           <?php
-          if (isset($_POST['stand'])) {
+          if (isset($_GET['stand'])) {
             foreach ($com->hand as $card) {
               echo '<img src="Cards/' . $card['value'] . $card['suit'] . '.png" alt="" >';
             }
           } else {
-            if (isset($_POST['signal'])) {
+            if (isset($_GET['signal'])) {
               $com->hand[] = $deck->getCard();
               $com->hand[] = $deck->getCard();
               $com->calPoint();
               echo '<img src="Cards/BackCard.jpg" alt="" >';
               echo '<img src="Cards/' . $com->hand[1]['value'] . $com->hand[1]['suit'] . '.png" alt="" >';
-            } else if (isset($_POST['hit'])) {
+            } else if (isset($_GET['hit'])) {
               echo '<img src="Cards/BackCard.jpg" alt="" >';
               echo '<img src="Cards/' . $com->hand[1]['value'] . $com->hand[1]['suit'] . '.png" alt="" >';
             }
@@ -55,7 +67,7 @@
         </div>
         <div id="status9" class="status">
           <?php
-          if (isset($_POST['stand']))
+          if (isset($_GET['stand']))
             echo '<div id="point0">Point: ' . $com->point[1] . '</div>';
           ?>
         </div>
@@ -64,17 +76,17 @@
     <div id="players">
       <div id="p0" class="player selected">
         <div id=" playerText0">
-        <?php 
-        echo 'ID: '.$player->id;
-        ?>
+          <?php
+          // echo 'ID: ' . $player->id;
+          ?>
         </div>
         <div id="img0" class="img">
           <?php
-          if (isset($_POST['signal'])) {
+          if (isset($_GET['signal'])) {
             $player->hand[] = $deck->getCard();
             $player->hand[] = $deck->getCard();
             $player->calPoint();
-            $player->bets = $_POST['bet'];
+            $player->bets = $_GET['bet'];
             $_SESSION['player'] = serialize($player);
             $_SESSION['com'] = serialize($com);
             $_SESSION['deck'] = serialize($deck);
@@ -82,8 +94,8 @@
             echo '<img src="Cards/' . $player->hand[1]['value'] . $player->hand[1]['suit'] . '.png" alt="" >';
           }
 
-          if (isset($_POST['hit']) || isset($_POST['stand'])) {
-            if (isset($_POST['hit'])) {
+          if (isset($_GET['hit']) || isset($_GET['stand'])) {
+            if (isset($_GET['hit'])) {
               $newCard = $deck->getCard();
               $player->hand[] = $newCard;
               $player->calPoint();
@@ -102,50 +114,46 @@
           <?php
 
           echo '<div id="chips0">Chips: ' . $player->chips . '</div>';
-          if (isset($_POST['stand'])) {
+          if (isset($_GET['stand'])) {
+            echo '<div id="point0">Point: ' . $player->point[1] . '</div>';
             echo '<div id="">Result: ' . $player->status . '</div>';
-            $player->bets = 0;
+            // $player->bets = 0;
           } else {
             echo '<div id="bets0">Bets: '  . $player->bets . '</div>';
           }
-          if (isset($_POST['signal']) || isset($_POST['hit']))
+          if (isset($_GET['signal']) || isset($_GET['hit']))
             echo '<div id="point0">Point: ' . $player->point[1] . '</div>';
           ?>
         </div>
+
         <div id="button0">
-          <form action="app.php" method="POST">
-            <input type='submit' id="assign0" value="Assign chips" <?php
-                                                                    if (isset($_POST['signal']) || isset($_POST['hit']) || isset($_POST['stand'])) {
-                                                                      echo 'hidden';
-                                                                    } else
-                                                                      echo '';
-                                                                    ?>>
+          <form action="app.php" method="GET">
             <input type='submit' id="hit0" name="hit" value="Hit" <?php
-                                                                  if (isset($_POST['signal']) || isset($_POST['hit'])) {
+                                                                  if (isset($_GET['signal']) || isset($_GET['hit'])) {
                                                                     echo '';
                                                                   } else
                                                                     echo 'hidden';
                                                                   ?>>
             <input type='submit' id="stand0" value="Stand" name="stand" <?php
-                                                                        if (isset($_POST['signal']) || isset($_POST['hit'])) {
+                                                                        if (isset($_GET['signal']) || isset($_GET['hit'])) {
                                                                           echo '';
                                                                         } else
                                                                           echo 'hidden';
                                                                         ?>>
             <input type="number" class="input" id="input0" name="bet" <?php
-                                                                      if (isset($_POST['signal']) || isset($_POST['hit']) || isset($_POST['stand'])) {
+                                                                      if (isset($_GET['signal']) || isset($_GET['hit']) || isset($_GET['stand'])) {
                                                                         echo 'hidden';
                                                                       } else
                                                                         echo ' required';
                                                                       ?>>
             <input type='submit' name='signal' id="signal0" value="Signal" <?php
-                                                                            if (isset($_POST['signal']) || isset($_POST['hit']) || isset($_POST['stand'])) {
+                                                                            if (isset($_GET['signal']) || isset($_GET['hit']) || isset($_GET['stand'])) {
                                                                               echo 'hidden';
                                                                             } else
                                                                               echo '';
                                                                             ?>>
             <input type='submit' name='again' id="aa" value="Play Agian" <?php
-                                                                          if (isset($_POST['stand'])) {
+                                                                          if (isset($_GET['stand'])) {
                                                                             echo '';
                                                                           } else
                                                                             echo 'hidden';
@@ -157,12 +165,44 @@
     </div>
   </div>
   <?php
-  if (isset($_POST['stand'])) {
+  if (isset($_GET['stand'])) {
+    include_once "database.php";
+    // print_r($conn);
+
+    $sql = 'INSERT INTO game(uID, dealerPoint, userPoint, result, chipsRemains) VALUES ("' . $player->id . '", "' . $com->point[1] . '", "' . $player->point[1] . '", "' . $player->status . '", ' . $player->chips . ')';
+    $sql1 = 'UPDATE player set chips =' . $player->chips . ' WHERE id="' . $player->id . '"';
+    if ($conn->query($sql)) {
+      // echo "game update successfully.";
+    } else {
+      echo "ERROR: Could not able to execute at game $sql. " . $conn->error;
+    }
+
+    if ($conn->query($sql1)) {
+      // echo "player update successfully.";
+    } else {
+      echo "ERROR: Could not able to execute at player $sql1. " . $conn->error;
+    }
+
+    if ($player->status[0] === 'W') {
+      $sql = 'UPDATE admin SET totalLose=totalLose+1, balance=balance-' . $player->bets . '';
+    } else if ($player->status[0] === 'L') {
+      $sql = 'UPDATE admin SET totalWin=totalWin+1, balance=balance+' . $player->bets . '';
+    }
+
+
+    if ($conn->query($sql)) {
+      // echo "player update successfully.";
+    } else {
+      echo "ERROR: Could not able to execute at player $sql1. " . $conn->error;
+    }
+
+    $conn->close();
     $player->hand = [];
-    $player->bet = 0;
     $com->hand = [];
+    $player->bets = 0;
     $_SESSION['player'] = serialize($player);
     $_SESSION['com'] = serialize($com);
+    $_SESSION['deck'] = serialize($deck);
   }
   ?>
 </body>

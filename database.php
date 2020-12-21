@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'root', '');
+$conn = new mysqli('localhost', 'iw3htp', 'password');
 if ($conn->connect_error) {
     die('Could not connect: ' . $conn->connect_error);
 }
@@ -22,10 +22,22 @@ if (!$conn->select_db('blackjack')) {
 }
 
 $sql = 'CREATE TABLE player( id CHARACTER(50), password CHARACTER(50), chips int ,PRIMARY KEY(id) )';
-
 if ($conn->query($sql)) {
     echo "Table create successfully.";
 } else {
     // echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
+$sql = 'CREATE TABLE game( gID int AUTO_INCREMENT, uID CHARACTER(50), dealerPoint CHARACTER(10), userPoint CHARACTER(10), result CHARACTER(20), chipsRemains int, PRIMARY KEY(gID) )';
+if ($conn->query($sql)) {
+    echo "Table create successfully.";
+} else {
+    // echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+$sql = 'CREATE TABLE admin( balance int, totalWin int, totalLose int )';
+if ($conn->query($sql)) {
+    echo "Table create successfully.";
+} else {
+    // echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}

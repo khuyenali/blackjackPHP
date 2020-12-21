@@ -5,36 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        label {
-            display: inline-block;
-            width: 5rem;
-            padding: 0.5rem;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            /* align-content: center; */
-        }
-
-        body>div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        div>div {
-            font-size: 2rem;
-        }
-
-        .buttonContainer {
-            display: flex;
-            justify-content: space-around;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -42,36 +13,41 @@
 
     session_start();
     include_once 'database.php' ?>
-    <div id="login">
-        <div>Login</div>
-        <form action="index.php" method="GET">
-            <label>ID</label>
-            <input type="text" name="idLogin" id="idLogin" required><br>
-            <label>Password</label>
-            <input type="text" name="passwordLogin" id="passwordLogin" required><br>
-            <div class="buttonContainer">
-                <label></label>
-                <input type="submit" value="Clean" id="cleanLogin" name="cleanLogin" formnovalidate>
-                <input type="submit" value="submit" id="submitLogina" name="submitLogin">
-            </div>
-        </form>
+    <div>
+        <button><a href="admin.php">Admin login</a></button>
     </div>
-    <div id="new">
-        <div>Create</div>
-        <form action="index.php" method="GET">
-            <label>ID</label>
-            <input type="text" name="idNew" id="idNew" required><br>
+    <div id="container">
+        <div id="login">
+            <div>Login</div>
+            <form action="index.php" method="GET">
+                <label>ID</label>
+                <input type="text" name="idLogin" id="idLogin" required><br>
+                <label>Password</label>
+                <input type="text" name="passwordLogin" id="passwordLogin" required><br>
+                <div class="buttonContainer">
+                    <label></label>
+                    <input type="submit" value="Clean" id="cleanLogin" name="cleanLogin" formnovalidate>
+                    <input type="submit" value="submit" id="submitLogina" name="submitLogin">
+                </div>
+            </form>
+        </div>
+        <div id="new">
+            <div>Create</div>
+            <form action="index.php" method="GET">
+                <label>ID</label>
+                <input type="text" name="idNew" id="idNew" required><br>
 
-            <label>Password</label>
-            <input type="text" name="passwordNew" id="passwordNew" required><br>
-            <label>Repeat Password</label>
-            <input type="text" name="repasswordNew" id="repasswordNew" required><br>
-            <div class="buttonContainer">
-                <label></label>
-                <input type="submit" value="Clean" id="cleanNew" name="cleanNew" formnovalidate>
-                <input type="submit" value="submit" id="submitNew" name="submitNew">
-            </div>
-        </form>
+                <label>Password</label>
+                <input type="text" name="passwordNew" id="passwordNew" required><br>
+                <label>Repeat Password</label>
+                <input type="text" name="repasswordNew" id="repasswordNew" required><br>
+                <div class="buttonContainer">
+                    <label></label>
+                    <input type="submit" value="Clean" id="cleanNew" name="cleanNew" formnovalidate>
+                    <input type="submit" value="submit" id="submitNew" name="submitNew">
+                </div>
+            </form>
+        </div>
     </div>
     <?php
     if (isset($_GET['submitNew'])) {
@@ -112,7 +88,7 @@
 
                 $_SESSION['player'] = serialize($player);
                 $_SESSION['com'] = serialize($com);
-                $_SESSION['$conn'] = serialize($conn);
+                // $_SESSION['$conn'] = serialize($conn);
                 header('Location: ./app.php');
                 $conn->close();
                 exit();
