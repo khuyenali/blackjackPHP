@@ -1,0 +1,192 @@
+/* 410705640 李任本耀 第8次作業12/23
+4107056040 BenYao 8th Homework 12/23 */
+body {
+  /* background-image: url(../img/welcome0.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px); */
+  min-height: 100vh;
+  background: rgb(90, 135, 112);
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    162deg,
+    rgba(90, 135, 112, 1) 17%,
+    rgba(66, 131, 98, 1) 38%,
+    rgba(16, 98, 52, 1) 99%
+  );
+
+  font-family: "Work Sans", sans-serif;
+  font-weight: 2rem;
+
+  display: flex;
+  justify-content: center;
+  /* position: relative; */
+}
+
+#title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 5rem;
+  color: #fffffe;
+  font-family: "Playfair Display", serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.contact {
+  max-width: 45rem;
+}
+
+.contact-heading {
+  color: #4d49ba;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.contact-notice {
+  font-weight: 300;
+  line-height: 1.6;
+  color: #7e95cc;
+  margin-bottom: 3rem;
+}
+
+.contact-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form-label {
+  /* color: #abd1c6; */
+  color: #004643;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.contact-form-input,
+.contact-form-area {
+  color: #050505;
+  /* display: block; */
+  width: 10rem;
+  padding: 0.5rem;
+  /* background-color: #f5f6fd; */
+  background-color: #e8e4e6;
+  /* background-color: #004643; */
+  border: 0;
+  outline: none;
+  resize: none;
+}
+
+/* .contact-form-input::-webkit-input-placeholder,
+.contact-form-area::-webkit-input-placeholder {
+  color: #b2bada;
+} */
+
+.contact-form-input {
+  border-radius: 5rem;
+}
+
+.contact-form-area {
+  min-height: 16rem;
+  border-radius: 2rem;
+  line-height: 1.6;
+}
+
+.contact-form-submit {
+  /* color: white; */
+  color: #001e1d;
+  padding: 0.5rem;
+  width: 5rem;
+  max-width: 25rem;
+  border-radius: 5rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  /* background-color: #50a85c; */
+  background-color: #f9bc60;
+  /* font-size: 0.5rem; */
+  text-transform: uppercase;
+  /* box-shadow: 0 10px 20px 0 rgba(129, 228, 190, 0.301); */
+}
+
+.contact-form-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+.contact-form-area::-webkit-scrollbar-track {
+  border-radius: 3rem;
+  background-color: #eee;
+}
+
+.contact-form-area::-webkit-scrollbar-thumb {
+  border-radius: 3rem;
+  background-color: #7b78f8;
+}
+#return {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem;
+  width: 15rem;
+  color: black;
+  max-width: 25rem;
+  border-radius: 5rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  /* background-color: #50a85c; */
+  background-color: #f9bc60;
+  /* font-size: 0.5rem; */
+  text-transform: uppercase;
+  margin: 1rem;
+  margin-top: 0;
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+#statistic {
+  font-size: 1.5rem;
+}
+
+#tableTitle{
+    margin-top: 1rem;
+    text-align: center;
+}
+
+option{
+    border: 0px;
+}
+
+table {
+  background-color: #e8e4e6;
+  border-collapse: collapse;
+  border: 5px solid black;
+  margin: 1rem;
+}
+
+table th {
+    border: 2px solid black;
+    background-color: #c0bebf; 
+}
+
+table td {
+  border: 2px solid #001e1d;
+  text-align: center;
+  width: 8rem;
+}
+
+#formtitle ,#tableTitle {
+  font-size: 1.5rem;
+  color: #fffffe;
+  margin-bottom: 0.5rem;
+}

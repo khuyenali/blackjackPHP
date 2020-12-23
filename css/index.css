@@ -1,0 +1,208 @@
+/* 410705640 李任本耀 第8次作業12/23
+4107056040 BenYao 8th Homework 12/23 */
+body {
+  /* background-image: url(../img/welcome0.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px); */
+  background: rgb(90, 135, 112);
+  background: linear-gradient(
+    162deg,
+    rgba(90, 135, 112, 1) 17%,
+    rgba(66, 131, 98, 1) 38%,
+    rgba(16, 98, 52, 1) 99%
+  );
+
+  font-family: "Work Sans", sans-serif;
+  font-weight: 2rem;
+  /* min-height: 100vh; */
+}
+
+#welcome {
+  font-size: 3rem;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  color: #f5f6fd;
+  position: fixed;
+  top: 5rem;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+#admin {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem;
+  width: 10rem;
+  color: black;
+  max-width: 25rem;
+  border-radius: 5rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  /* background-color: #50a85c; */
+  background-color: #f9bc60;
+  /* font-size: 0.5rem; */
+  text-transform: uppercase;
+}
+.contact {
+  max-width: 45rem;
+}
+
+.contact-heading {
+  color: #4d49ba;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.contact-notice {
+  font-weight: 300;
+  line-height: 1.6;
+  color: #7e95cc;
+  margin-bottom: 3rem;
+}
+
+.contact-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form-label {
+  /* color: #abd1c6; */
+  color: #004643;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.contact-form-input,
+.contact-form-area {
+  color: #7e95cc;
+  display: block;
+  width: 13rem;
+  padding: 0.75rem;
+  background-color: #f5f6fd;
+  /* background-color: #004643; */
+  border: 0;
+  outline: none;
+  resize: none;
+}
+
+/* .contact-form-input::-webkit-input-placeholder,
+.contact-form-area::-webkit-input-placeholder {
+  color: #b2bada;
+} */
+
+.contact-form-input {
+  border-radius: 5rem;
+}
+
+.contact-form-area {
+  min-height: 16rem;
+  border-radius: 2rem;
+  line-height: 1.6;
+}
+
+.contact-form-submit {
+  /* color: white; */
+  color: #001e1d;
+  padding: 0.5rem;
+  width: 5rem;
+  max-width: 25rem;
+  border-radius: 5rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  /* background-color: #50a85c; */
+  background-color: #f9bc60;
+  /* font-size: 0.5rem; */
+  text-transform: uppercase;
+  /* box-shadow: 0 10px 20px 0 rgba(129, 228, 190, 0.301); */
+}
+
+.contact-form-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+.contact-form-area::-webkit-scrollbar-track {
+  border-radius: 3rem;
+  background-color: #eee;
+}
+
+.contact-form-area::-webkit-scrollbar-thumb {
+  border-radius: 3rem;
+  background-color: #7b78f8;
+}
+#new,
+#login {
+  display: flex;
+  margin: 2em;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  min-width: 20vw;
+  min-height: 25vh;
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #abd1c6;
+  padding: 30px;
+  box-shadow: 0 5.3px 2.2px rgba(0, 0, 0, 0.036),
+    0 10.8px 5.3px rgba(0, 0, 0, 0.058), 0 17.4px 10px rgba(0, 0, 0, 0.077),
+    0 26.5px 17.9px rgba(0, 0, 0, 0.098), 0 42.6px 33.4px rgba(0, 0, 0, 0.125),
+    0 88px 80px rgba(0, 0, 0, 0.18);
+}
+
+#title {
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  font-family: "Playfair Display", serif;
+  color: yellow;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 3rem;
+  margin-bottom: 5rem;
+}
+
+#container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* align-content: center; */
+}
+
+#container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container > div > div {
+  font-size: 2rem;
+  color: #fffffe;
+  color: #004643;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.warning {
+  color: rgb(247, 63, 63);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 25%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}

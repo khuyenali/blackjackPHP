@@ -1,0 +1,326 @@
+/* 410705640 李任本耀 第8次作業12/23
+4107056040 BenYao 8th Homework 12/23 */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Work Sans", sans-serif;
+}
+
+#menu {
+  background-color: rgb(103, 214, 131);
+  border-radius: 1rem;
+  position: fixed;
+  right: 1rem;
+  /* width: 100%; */
+}
+
+#menu > ul {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+#menu li {
+  list-style: none;
+  margin: 1rem;
+  /* padding: 0; */
+  /* float: right; */
+  /* background-color: rgb(91, 157, 214); */
+}
+
+#menu a {
+  text-decoration: none;
+}
+
+#bj {
+  font-family: "Playfair Display", serif;
+}
+a:visited {
+  color: black;
+}
+#right {
+  display: flex;
+  justify-content: center;
+}
+
+.status > div {
+  display: inline-block;
+  margin: 0.5rem;
+  color: rgb(230, 9, 9);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.player > div:first-child,
+#p9 > div:first-child {
+  margin: 0.5ex;
+  /* color: rgb(53, 94, 155); */
+  color: #004643;
+  font-size: 3ex;
+  font-weight: bold;
+}
+
+#title {
+  text-transform: uppercase;
+  font-family: "Playfair Display", serif;
+  color: yellow;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 3rem;
+  margin-bottom: 5rem;
+}
+
+img {
+  width: 7rem;
+}
+
+.input {
+  width: 3rem;
+}
+
+.selected {
+  border: 0.25rem solid rgb(133, 255, 143);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: 0.3s;
+  background-color: #6cc4ae;
+}
+
+.isSignal {
+  border: 0.25rem solid rgb(228, 79, 79);
+  background-color: #92dbc6;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: 0.3s;
+}
+
+#com,
+#com > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+#com > div {
+  /* width: ; */
+  /* padding: 4rem; */
+  /* margin: 2rem; */
+}
+
+#players {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.player > div {
+  display: flex;
+  justify-content: center;
+}
+
+.img > img {
+  float: left;
+  position: relative;
+  animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  /* Firefox */
+  -webkit-animation: fadein 0.5s;
+  /* Safari and Chrome */
+  -o-animation: fadein 0.5s;
+  /* Opera */
+}
+@keyframes fadein {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.img > img:not(:first-child) {
+  margin-left: -3.5rem;
+  /* margin-right: 5ex; */
+  /* margin-top: 10ex; */
+}
+
+body {
+  /* background-image: url(../img/table1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
+  background: rgb(83, 120, 101);
+  background: linear-gradient(
+    162deg,
+    rgba(83, 120, 101, 1) 17%,
+    rgba(66, 131, 98, 1) 38%,
+    rgba(16, 98, 52, 1) 99%
+  );
+  /* height: 100vh; */
+  min-height: 100vh;
+  /* backdrop-filter: blur(5px); */
+  transition: 0.3s;
+}
+
+#playGround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* height: 100vh; */
+}
+
+#container p {
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  color: #fce403;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+#container > div {
+  display: flex;
+  justify-content: center;
+  /* margin: 2rem; */
+}
+
+#playersNumber {
+  background-color: #fce403;
+  border: 0px solid #fce403;
+  border-radius: 2em;
+  height: 3rem;
+  text-align: center;
+  text-align-last: center;
+  font-size: 1rem;
+  width: 10rem;
+  transition: 0.3s;
+}
+option {
+  /* text-align: center; */
+  /* reset to left*/
+}
+
+#playersNumber:focus {
+  outline: none;
+  /* background-color: #000000;
+  color: #fce403;
+  text-align: center; */
+}
+#playersNumber:hover {
+  outline: none;
+  background-color: #000000;
+  color: #fce403;
+}
+
+#title {
+  animation: blinker 2s linear infinite;
+  text-align: center;
+}
+
+@keyframes blinker {
+  25% {
+    color: #000000;
+  }
+  50% {
+    color: #fce403;
+  }
+  75% {
+    color: #fce403;
+  }
+}
+
+#playGround button {
+  padding: 1rem;
+  background-color: #fce403;
+  /* background-color: #f9bc60; */
+  border: 0px solid #fce403;
+  border-radius: 0.5rem;
+  height: 2rem;
+  width: 3.5rem;
+  text-align: center;
+  transition: 0.3s;
+  padding: 0px;
+  margin: 0.25rem;
+}
+#playGround button:hover {
+  background-color: #000000;
+  color: #fce403;
+}
+#playGround button:focus {
+  outline: none;
+}
+#playGround button:disabled {
+  background-color: #a39d9d;
+}
+
+#playGround input {
+  /* background-color: #fce403; */
+  background-color: #f9bc60;
+  border: 0px solid #fce403;
+  border-radius: 2rem;
+  height: 2rem;
+  text-align: center;
+  width: 4rem;
+  margin: 0.25rem;
+  font-size: 0.75rem;
+
+  color: #001e1d;
+  padding: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  /* background-color: #50a85c; */
+  /* font-size: 0.5rem; */
+  text-transform: uppercase;
+  /* box-shadow: 0 10px 20px 0 rgba(129, 228, 190, 0.301); */
+}
+
+#playGround #input0 {
+  width: 6rem;
+  background-color: #f5f6fd;
+  border-radius: 5rem;
+}
+
+#playGround #again {
+  width: 8rem;
+}
+
+.warning {
+  color: rgb(247, 71, 71);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 60%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}

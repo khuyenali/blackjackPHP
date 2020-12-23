@@ -1,4 +1,7 @@
 <?php
+
+//  410705640 李任本耀 第8次作業12/23
+// 4107056040 BenYao 8th Homework 12/23
 if (isset($_POST['clear'])) {
     $_SESSION = [];
 }
@@ -91,7 +94,7 @@ class Com
 
     function callMe()
     {
-        echo 'Hello' . $this->id;
+        // echo 'Hello' . $this->id;
     }
 
     function calPoint()
@@ -154,7 +157,7 @@ class Com
             return;
         }
         while ($this->point[0] < 17) {
-            echo $this->point[0] . 'hello';
+            // echo $this->point[0] . 'hello';
             $this->hand[] = $deck->getCard();
             $this->calPoint();
         }
@@ -176,14 +179,14 @@ class Player extends Com
 
     function callMe()
     {
-        echo 'Hello' . $this->id;
+        // echo 'Hello' . $this->id;
     }
 }
 
 if (isset($_SESSION['player'])) {
     $player = unserialize($_SESSION['player']);
-} 
+}
 // print_r($player);
 if (isset($_SESSION['com'])) {
     $com = unserialize($_SESSION['com']);
-} 
+}

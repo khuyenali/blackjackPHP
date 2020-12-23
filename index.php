@@ -1,3 +1,5 @@
+<!-- 410705640 李任本耀 第8次作業12/23
+4107056040 BenYao 8th Homework 12/23 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,71 +7,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-    <?php
 
+    <?php
+    // print_r($_COOKIE['result']);
     session_start();
     include_once 'database.php' ?>
+    <div id="welcome">Welcome to blackjack</div>
     <div>
-        <button><a href="admin.php">Admin login</a></button>
+        <a href="admin.php" id="admin">Admin login</a>
     </div>
     <div id="container">
-        <div id="login">
+        <div id="login" class="contact">
             <div>Login</div>
-            <form action="index.php" method="GET">
-                <label>ID</label>
-                <input type="text" name="idLogin" id="idLogin" required><br>
-                <label>Password</label>
-                <input type="text" name="passwordLogin" id="passwordLogin" required><br>
+            <form action="index.php" method="POST">
+                <div class="contact-form-group">
+                    <label class="contact-form-label">ID</label>
+                    <input type="text" name="idLogin" id="idLogin" class="contact-form-input" required>
+                </div>
+                <div class="contact-form-group">
+                    <label class="contact-form-label">Password</label>
+                    <input type="password" name="passwordLogin" id="passwordLogin" class="contact-form-input" required>
+                </div>
                 <div class="buttonContainer">
-                    <label></label>
-                    <input type="submit" value="Clean" id="cleanLogin" name="cleanLogin" formnovalidate>
-                    <input type="submit" value="submit" id="submitLogina" name="submitLogin">
+                    <!-- <label></label> -->
+                    <input type="submit" value="Clean" id="cleanLogin" name="cleanLogin" class="contact-form-submit" formnovalidate>
+                    <input type="submit" value="submit" id="submitLogina" name="submitLogin" class="contact-form-submit">
                 </div>
             </form>
         </div>
-        <div id="new">
+        <div id="new" class="contact">
             <div>Create</div>
-            <form action="index.php" method="GET">
-                <label>ID</label>
-                <input type="text" name="idNew" id="idNew" required><br>
+            <form action="index.php" method="POST">
+                <div class="contact-form-group">
+                    <label class="contact-form-label">ID</label>
+                    <input type="text" name="idNew" id="idNew" class="contact-form-input" required>
+                </div>
 
-                <label>Password</label>
-                <input type="text" name="passwordNew" id="passwordNew" required><br>
-                <label>Repeat Password</label>
-                <input type="text" name="repasswordNew" id="repasswordNew" required><br>
+                <div class="contact-form-group">
+                    <label class="contact-form-label">Password</label>
+                    <input type="password" name="passwordNew" id="passwordNew" class="contact-form-input" required>
+                </div>
+                <div class="contact-form-group">
+                    <label class="contact-form-label">Confirm Password</label>
+                    <input type="password" name="repasswordNew" id="repasswordNew" class="contact-form-input" required>
+                </div>
                 <div class="buttonContainer">
-                    <label></label>
-                    <input type="submit" value="Clean" id="cleanNew" name="cleanNew" formnovalidate>
-                    <input type="submit" value="submit" id="submitNew" name="submitNew">
+                    <!-- <label></label> -->
+                    <input type="submit" value="Clean" id="cleanNew" name="cleanNew" class="contact-form-submit" formnovalidate>
+                    <input type="submit" value="submit" id="submitNew" name="submitNew" class="contact-form-submit">
                 </div>
             </form>
         </div>
     </div>
     <?php
-    if (isset($_GET['submitNew'])) {
-        $id = $_GET['idNew'];
-        $password = $_GET['passwordNew'];
-        $rePass = $_GET['repasswordNew'];
+    if (isset($_POST['submitNew'])) {
+        $id = $_POST['idNew'];
+        $password = $_POST['passwordNew'];
+        $rePass = $_POST['repasswordNew'];
         if ($password === $rePass) {
             $sql = 'INSERT INTO player VALUES("' . $id . '", "' . $password . '", "' . 1000 . '")';
             if ($conn->query($sql)) {
-                echo 'User create successfully';
+                echo '<div class="warning">User create successfully</div>';
             } else {
                 // echo 'Error ' . mysqli_error($link);
-                echo 'ID was taken!';
+                echo '<div class="warning">ID was taken!</div>';
             }
         } else {
-            echo 'Repeat password must match with password';
+            echo '<div class="warning">Confirm password must match with password</div>';
         }
     }
 
-    if (isset($_GET['submitLogin'])) {
-        $id = $_GET['idLogin'];
-        $password = $_GET['passwordLogin'];
+    if (isset($_POST['submitLogin'])) {
+        $id = $_POST['idLogin'];
+        $password = $_POST['passwordLogin'];
         $sql = 'SELECT id, password, chips FROM player WHERE id="' . $id . '"';
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -95,10 +111,10 @@
                 //to do
 
             } else {
-                echo 'Wrong password';
+                echo '<div class="warning">Wrong ID or password</div>';
             }
         } else {
-            echo 'ID not found';
+            echo '<div class="warning">Wrong ID or password</div>';
         }
     }
 
